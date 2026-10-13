@@ -322,35 +322,33 @@ button{cursor:pointer}
           <button type="button" id="preview" class="btn white" hidden>Skip login and preview the categories</button>
 
         <!-- Full Screen Login Wall -->
+          
+Abeeha <whoabeeha@gmail.com>
+6:20 PM (0 minutes ago)
+to me
+
 <div id="login-wall" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #161B20; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
-<h2 style="color: #F1E8D3; font-family: 'Unbounded', sans-serif; font-size: 28px; margin-bottom: 10px;">Sign in to SyncSphere</h2>
-
-<div id="g_id_onload"
-data-client_id="://googleusercontent.com"
-data-context="signin"
-data-ux_mode="popup"
-data-callback="handleCredentialResponse"
-data-auto_prompt="false">
-</div>
-
-<div class="g_id_signin"
-data-type="standard"
-data-shape="rectangular"
-data-theme="filled_blue"
-data-text="continue_with"
-data-size="large"
-data-logo_alignment="left">
-</div>
+<h2 style="color: #F1E8D3; font-family: sans-serif; font-size: 28px; margin-bottom: 10px;">Sign in to SyncSphere</h2>
+<div id="google-btn-target"></div>
 </div>
 
 <script>
-// This function automatically runs when someone signs in with Gmail
+window.onload = function () {
+google.accounts.id.initialize({
+client_id: ":1018450629982-f73m6fhcpt7t9bron0q1ojoi451jo25h.apps.googleusercontent.com
+callback: handleCredentialResponse
+});
+google.accounts.id.renderButton(
+document.getElementById("google-btn-target"),
+{ theme: "filled_blue", size: "large", text: "continue_with", shape: "rectangular" }
+);
+};
+
 function handleCredentialResponse(response) {
 console.log("Encoded JWT ID token: " + response.credential);
-// This removes the login wall instantly and reveals your app!
 document.getElementById("login-wall").style.display = "none";
 }
-</script>
+</scrip
           <div class="or"><span></span><em>or use email</em><span></span></div>
 
           <div class="fields">
