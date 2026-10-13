@@ -173,9 +173,8 @@ button{cursor:pointer}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
 
 </style>
+  <script src="https://google.com" async defer></script>
 </head>
-<body>
-<div class="root">
 
   <div class="bg" aria-hidden="true">
     <div class="sky"></div>
@@ -322,11 +321,36 @@ button{cursor:pointer}
           <div id="notice" class="notice" role="alert" hidden></div>
           <button type="button" id="preview" class="btn white" hidden>Skip login and preview the categories</button>
 
-          <button type="button" id="google" class="btn white">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9E2F2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3zM3 7l9 7 9-7"/></svg>
-            Continue with Gmail
-          </button>
+        <!-- Full Screen Login Wall -->
+<div id="login-wall" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #161B20; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
+<h2 style="color: #F1E8D3; font-family: 'Unbounded', sans-serif; font-size: 28px; margin-bottom: 10px;">Sign in to SyncSphere</h2>
 
+<div id="g_id_onload"
+data-client_id="://googleusercontent.com"
+data-context="signin"
+data-ux_mode="popup"
+data-callback="handleCredentialResponse"
+data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin"
+data-type="standard"
+data-shape="rectangular"
+data-theme="filled_blue"
+data-text="continue_with"
+data-size="large"
+data-logo_alignment="left">
+</div>
+</div>
+
+<script>
+// This function automatically runs when someone signs in with Gmail
+function handleCredentialResponse(response) {
+console.log("Encoded JWT ID token: " + response.credential);
+// This removes the login wall instantly and reveals your app!
+document.getElementById("login-wall").style.display = "none";
+}
+</script>
           <div class="or"><span></span><em>or use email</em><span></span></div>
 
           <div class="fields">
